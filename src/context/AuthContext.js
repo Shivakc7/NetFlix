@@ -1,44 +1,44 @@
-// import { createContext, useContext, useEffect, useState } from "react";
-// import { auth } from "../firebase";
-// import {
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   signOut,
-//   onAuthStateChanged,
-// } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
-// const AuthContext = createContext();
+const AuthContext = createContext();
 
-// export function AuthContextProvider({ children }) {
-//   const [user, setUser] = useState({});
+export function AuthContextProvider({ children }) {
+  const [user, setUser] = useState({});
 
-//   const SignUp = (email, password) => {
-//     return createUserWithEmailAndPassword(auth, email, password);
-//   };
+  const SignUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-//   const LogIn = (email, password) => {
-//     return signInWithEmailAndPassword(auth, email, password);
-//   };
+  const SignIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-//   const LogOut = () => {
-//     return signOut(auth);
-//   };
+  const LogOut = () => {
+    return signOut(auth);
+  };
 
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//     return () => {
-//       unsubscribe();
-//     };
-//   });
-//   return (
-//     <AuthContextProvider value={{ SignUp, LogIn, LogOut, user }}>
-//       {children}
-//     </AuthContextProvider>
-//   );
-// }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  });
+  return (
+    <AuthContext.Provider value={{ SignUp, SignIn, LogOut, user }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
 
-// export function UserAuth() {
-//   return useContext(AuthContext);
-// }
+export function UserAuth() {
+  return useContext(AuthContext);
+}

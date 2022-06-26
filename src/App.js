@@ -10,14 +10,14 @@ function App() {
   return (
     <>
         <Navbar />
+      <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<Account />} />
         </Routes>
-      {/* <AuthContextProvider>
-      </AuthContextProvider> */}
+      </AuthContextProvider>
     </>
   );
 }
