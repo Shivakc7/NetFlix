@@ -23,7 +23,7 @@ const Slider = ({ title, fetchURL, sliderID }) => {
   const rightSlider = () => {
     var slider = document.getElementById("slider" + sliderID);
     slider.scrollLeft = slider.scrollLeft + 500;
-  };
+  };   
   return (
     <>
       <h2 className="md:text-xl font-bold p-4">{title}</h2>
@@ -38,7 +38,7 @@ const Slider = ({ title, fetchURL, sliderID }) => {
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
           {movies.map((item, id) => (
-            <Movie item={item} id={id} />
+            <Movie key={id} item={item} id={id} />
           ))}
         </div>
         <MdChevronRight

@@ -1,7 +1,25 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { useState } from "react";
+import {Link, useNavigate} from 'react-router-dom'
+import { UserAuth } from "../context/AuthContext";
 
 const Signup = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const {user , CreateUser} = UserAuth()
+  const navigate = useNavigate()
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+
+    try {
+      await CreateUser(email,password)
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  console.log(email,password, user)
   return (
     <>
       <div className="w-full h-screen">
@@ -14,18 +32,20 @@ const Signup = () => {
         <div className="fixed top-14 left-1/4 w-1/2 h-3/4  bg-black/75">
           <div className="text-white sm:p-10 space-y-4">
             <h1 className=" capitalize text-3xl font-bold ">Sign Up</h1>
-            <form className="flex flex-col space-y-4 ">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 ">
               <input
                 className="bg-gray-600 py-2 px-2 rounded text-lg"
                 type="email"
                 placeholder="Email or phone number"
                 autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="bg-gray-600 py-2 px-2 rounded text-lg"
                 type="password"
                 placeholder="Password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="bg-red-600  rounded py-2 text-lg">
                 Sign Up
@@ -36,7 +56,7 @@ const Signup = () => {
                 <input className="mr-2" type="checkbox" />
                 Remember me
               </p>
-              <p>Need Help?</p>
+              <p className="cursor-pointer">Need Help?</p>
             </div>
             <p className="py-3">
               <span className="text-gray-600 text-base">Already subscribed to Netflix? </span>
