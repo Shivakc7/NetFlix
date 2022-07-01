@@ -7,7 +7,6 @@ import { useState } from "react";
 const Navbar = () => {
   const { user, LogOut } = UserAuth();
   const [isScrolled, setIsScrolled] = useState(false)
-  // console.log(user)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {

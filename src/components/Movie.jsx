@@ -28,7 +28,7 @@ const Movie = ({ item, id }) => {
   };
 
   return (
-    <div key={id} className="lg:w-56 inline-block cursor-pointer relative p-2 ">
+    <div key={id} className=" w-40 lg:w-56 inline-block cursor-pointer relative p-2 ">
       <img
         src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`}
         alt={item?.title}

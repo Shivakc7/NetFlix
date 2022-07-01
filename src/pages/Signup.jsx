@@ -29,7 +29,7 @@ const Signup = () => {
           alt="/"
         />
         <div className="fixed bg-black/60 top-0 left-0 w-full h-screen"></div>
-        <div className="fixed top-14 left-1/4 w-1/2 h-3/4  bg-black/75">
+        <div className="fixed top-20 left-10 lg:left-1/4 right-10 lg:w-1/2 h-3/4  bg-black/75">
           <div className="text-white sm:p-10 space-y-4">
             <h1 className=" capitalize text-3xl font-bold ">Sign Up</h1>
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 ">
@@ -51,7 +51,7 @@ const Signup = () => {
                 Sign Up
               </button>
             </form>
-            <div className="flex items-center justify-between pb-6 text-gray-600">
+            <div className="flex items-center justify-between pb-6 text-gray-600 cursor-pointer">
               <p>
                 <input className="mr-2" type="checkbox" />
                 Remember me

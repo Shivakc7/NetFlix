@@ -26,7 +26,7 @@ const Slider = ({ title, fetchURL, sliderID }) => {
   };   
   return (
     <>
-      <h2 className="md:text-xl font-bold p-4">{title}</h2>
+      <h2 className="text-lg md:text-xl font-bold p-4">{title}</h2>
       <div className="relative flex items-center group">
         <MdChevronLeft
           onClick={leftSlider}
